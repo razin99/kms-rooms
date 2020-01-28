@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>KMS Rooms</title>
+  <meta name="google-signin-scope" content="profile email">
+  <meta name="google-signin-client_id" content="528203187810-cdk9m28m7dnldi8j2t1bshg5qdiqmmht.apps.googleusercontent.com">
+  <script src="https://apis.google.com/js/platform.js" async defer></script>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+  <link rel="stylesheet" type="text/css" href="css/custom.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+</head>
+<body>
+  <div class="row justify-content-center">
+  <div class="jumbotron">
+    <div class="container container-fluid">
+    <h1>Book a room</h1>
+    <p>Reserve a room at WP for your meetings. Reserve up to a week in advance</p>
+    <div class="g-signin2" data-onsuccess="onSignIn" data-theme="dark"></div><br>
+    </div>
+  </div>
+    <script>
+      function onSignIn(googleUser) {
+        // Useful data for your client-side scripts:
+        var profile = googleUser.getBasicProfile();
+        //window.alert("ID: " + profile.getId()); // Don't send this directly to your server!
+        //window.alert("Domain: " + googleUser.getHostedDomain());
+        document.getElementById("fullName").value= profile.getName().toString();
+        document.getElementById("email").value= profile.getEmail().toString();
+        document.getElementById("domain").value= googleUser.getHostedDomain().toString();
+        domain = googleUser.getHostedDomain();
+        };
+
+        function verifyDomain(){
+          if( domain == 'kmseremban.edu.my'){
+            document.getElementById("form").submit();
+          } else {
+            window.alert("Use kmseremban account to proceed");
+            signOut();
+          }
+        }
+
+        function signOut() {
+          var auth2 = gapi.auth2.getAuthInstance();
+          auth2.signOut().then(function () {
+            console.log('User signed out.');
+          });
+        }
+
+    </script>
+
+  </div>
+
+  <form action="response.php" method="post" autocomplete="off" id="form" name="form">
+
+<div class="row justify-content-center">
+<div class="col-1"></div>
+
+<div class="col-10">
+  <input type="hidden" type="text" id="fullName" name="fullName" value="" />
+  <input type="hidden" type="text" id="email" name="email" value="" />
+  <input type="hidden" type="text" id="domain" name="domain" value="" />
+
+<div class="col">
+    <div class="form-group"><!--College ID field-->
+      <label for="collegeID">College ID</label>
+        <input type="text" class="form-control" name="collegeID"  placeholder="IBS00000"
+          pattern="[ALEIBS]{3}[0-9]{5}" id="collegeID" required/><br>
+    </div>
+</div><hr>
+
+<div class="col">
+    <div class="form-group"><!--date field-->
+      <label for="bookdate">Date:</label>
+        <input type = "date" class="form-control" name="bookdate" required>
+    </div>
+</div>
+
+<div class="col"><!--time fields-->
+  <div class="row">
+    <div class="col">
+      <div class="form-group"><!--start time field-->
+        <label for="tStart">Start time:</label>
+          <input type = "time" class="form-control" name="tStart" required>
+      </div>
+    </div>
+
+    <div class="col">
+      <div class="form-group"><!--end time field-->
+        <label for="tEnd">End time:</label>
+          <input type = "time" class="form-control" name="tEnd" required>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="col">
+      <select name="WP" class="form-control"><!--wp select field-->
+        <option value="null">Choose a WP</option>
+        <option value="wp1">WP 1</option>
+        <option value="wp2">WP 2</option>
+        <option value="wp3">WP 3</option>
+        <option value="wp4">WP 4</option>
+        <option value="wp5">WP 5</option>
+        <option value="wp6">WP 6</option>
+      </select>
+</div>
+
+</div>
+
+<div class="col-1"></div>
+</div>
+
+<br><br>
+</form>
+
+<div class="row justify-content-center">
+  <div class="col-1"></div>
+    <div class="col-10">
+      <button onclick="verifyDomain()" class="btn btn-primary btn-lg btn-block">Submit</button><br>
+    </div>
+  <div class="col-1"></div>
+</div>
+
+<div class="row justify-content-center">
+  <div class="col-1"></div>
+  <div class="col-10">
+    <a class="btn btn-secondary btn-lg btn-block" href="default.html" role="button">Return home</a><br>
+  </div>
+  <div class="col-1"></div>
+</div>
+
+
+</body>
+</html>

@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>KMS Rooms</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+  <link rel="stylesheet" type="text/css" href="css/custom.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+</head>
+<body>
+  <div class="jumbotron">
+    <h1>Check available rooms</h1>
+    <p>Select a date to view booked rooms</p>
+  </div>
+
+  <form action="roomCheck.php" method="post" autocomplete="off">
+
+<div class="row justify-content-center">
+  <div class="col-1"></div>
+  <div class="col-10">
+    <div class="form-group"><!--date field-->
+      <label for="bookdate">Check availble date:</label>
+      <input type = "date" class="form-control" name="checkdate" required>
+    </div>
+  </div>
+  <div class="col-1"></div>
+</div>
+
+<br><br>
+
+<div class="row justify-content-center">
+  <div class="col-1"></div>
+    <div class="col-10">
+      <button type="submit" class="btn btn-primary btn-lg btn-block">Check now</button>
+    </div>
+  <div class="col-1"></div>
+</div>
+</form>
+
+<br>
+
+<div class="row justify-content-center">
+  <div class="col-1"></div>
+  <div class="col-10">
+    <a class="btn btn-secondary btn-lg btn-block" href="default.html" role="button">Return home</a><br>
+  </div>
+  <div class="col-1"></div>
+</div>
+
+</body>
+</html>
